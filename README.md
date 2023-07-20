@@ -19,17 +19,17 @@ Replace [arxiv_id] with the ID of the paper from arXiv that you wish to summariz
 ## Options
 The script supports several command-line options:
 
-`--dry-run``: If True, don't actually generate a summary. The paper will still be downloaded and cached, but no calls will be made to the LLM.
+`--dry-run`: If True, don't actually generate a summary. The paper will still be downloaded and cached, but no calls will be made to the LLM.
 
-`--keep-ref``: If True, keep the references in the paper before summarizing.
+`--keep-ref`: If True, keep the references in the paper before summarizing.
 
-`--keep-app``: If True, keep the appendices in the paper before summarizing.
+`--keep-app`: If True, keep the appendices in the paper before summarizing.
 
-`--keep-latex``: If True, keep the LaTeX in the paper before summarizing, otherwise it will be converted to plain text.
+`--keep-latex`: If True, keep the LaTeX in the paper before summarizing, otherwise it will be converted to plain text.
 
-`--use-ar5iv``: If True, use ar5iv instead of arxiv-vanity.
+`--use-ar5iv`: If True, use ar5iv instead of arxiv-vanity.
 
-`--force-refresh``: If True, force the paper to be refreshed, ignoring the cache.
+`--force-refresh`: If True, force the paper to be refreshed, ignoring the cache.
 
 ## Output
 The script outputs a text file containing the generated summary of the paper. This summary includes the paper's metadata, number of tokens in the input prompt, number of tokens in the generated content, and the content itself.
