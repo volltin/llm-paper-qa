@@ -179,12 +179,14 @@ def parse_paper_content(
             for target_sec_name in target_section_names:
                 if target_sec_name.endswith("_"):
                     if h2_text_comp.startswith(target_sec_name[:-1]):
-                        h2.parent.decompose()
-                        logging.info(f"Removing: {h2_text}")
+                        if h2.parent:
+                            h2.parent.decompose()
+                            logging.info(f"Removing: {h2_text}")
                 else:
                     if h2_text_comp == target_sec_name:
-                        h2.parent.decompose()
-                        logging.info(f"Removing: {h2_text}")
+                        if h2.parent:
+                            h2.parent.decompose()
+                            logging.info(f"Removing: {h2_text}")
 
     if remove_references:
         remove_section_by_h2(
