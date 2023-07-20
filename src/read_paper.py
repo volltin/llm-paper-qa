@@ -24,12 +24,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TEXT_CACHE_DIR = Path(".cached_html")
+# current file path
+_CURRENT_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
+PROMPTS_DIR = _CURRENT_DIR / "prompts"
+TEXT_CACHE_DIR = _CURRENT_DIR / ".cached"
 TEXT_CACHE_DIR.mkdir(exist_ok=True)
 
 
 def make_paper_query(paper_content):
-    tpl = open("prompts/paper_query.tpl", "r").read()
+    tpl = open(PROMPTS_DIR / "paper_query.tpl", "r").read()
     return tpl.format(paper_content=paper_content)
 
 
@@ -43,6 +46,7 @@ async def fetch_response_with_streaiming(stream):
                     pass
                 if "content" in c["choices"][0]["delta"]:
                     print(c["choices"][0]["delta"]["content"], end="")
+                    sys.stdout.flush()
                     content += c["choices"][0]["delta"]["content"]
     except Exception as e:
         logger.error(e)
@@ -133,7 +137,7 @@ def main(
         paper_content = "Hello!"
 
     messages = [
-        {"role": "system", "content": open("prompts/paper_system.tpl", "r").read()},
+        {"role": "system", "content": open(PROMPTS_DIR / "paper_system.tpl", "r").read()},
         {"role": "user", "content": make_paper_query(paper_content)},
     ]
 
@@ -173,7 +177,7 @@ def main(
             logger.error(e)
 
     summary_path = TEXT_CACHE_DIR / f"{url_hash}.summary.txt"
-    summary_tpl = open("prompts/summary.tpl", "r").read()
+    summary_tpl = open(PROMPTS_DIR / "summary.tpl", "r").read()
     summary = summary_tpl.format(
         paper_title=paper_title,
         paper_arxiv_id=arxiv_id,

@@ -20,7 +20,8 @@ class PaperNotFound(Exception):
 
 
 # The directory where the cached HTML and text files are stored
-CACHE_DIR = Path(".cached_html")
+_CURRENT_DIR = Path(os.path.dirname(os.path.realpath(__file__)))
+CACHE_DIR = _CURRENT_DIR / ".cached"
 CACHE_DIR.mkdir(exist_ok=True)
 
 
