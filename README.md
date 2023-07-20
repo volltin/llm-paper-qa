@@ -2,7 +2,14 @@
 The LLM Paper QA is a tool designed to read, parse, and generate summaries from scientific papers hosted on the arXiv repository. This tool uses OpenAI's GPT-4 (gpt-4-32k) to generate the summaries and can be useful for quickly understanding the key points of a paper without having to read the entire document.
 
 ## Quick Start
-Before running the script, you need to install the required packages using pip:
+Before running the script, you need to set up your environment variables. An example `.env.example` file has been provided in the repository. Copy the `.env.example` file to a new file called `.env`, then replace the placeholders with your actual information.
+
+```bash
+cp .env.example .env
+# edit .env
+```
+
+After setting up your environment variables, install the required packages using pip:
 
 ```bash
 pip install -r requirements.txt
