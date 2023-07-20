@@ -46,3 +46,5 @@ Contributions to LLM Paper QA are welcomed.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+(README.md generated using GPT-4.)
